@@ -75,13 +75,18 @@ public class World implements Serializable
 	public static World open(File file)
 	throws IOException
 	{
-		JSX.ObjectReader in = null;
-		
+		//JSX.ObjectReader in = null;
+		ObjectInputStream in = null;
+
 		try
 		{
-			GZIPInputStream gzi = new GZIPInputStream(new BufferedInputStream(new FileInputStream(file), 4096));
-			in =  new JSX.ObjectReader(gzi);
+			in = new ObjectInputStream(new FileInputStream(file));
 			World w = (World) in.readObject();
+			//GZIPInputStream gzi = new GZIPInputStream(new BufferedInputStream(new FileInputStream(file), 4096));
+			//in =  new JSX.ObjectReader(gzi);
+			//System.out.println("New objectreader");
+			//World w = (World) in.readObject();
+			//System.out.println("objectreader finsihed");
 			return (World) w;
 		}
 		catch(IOException ioe)
@@ -111,16 +116,19 @@ public class World implements Serializable
 	public static void save(File file, World world)
 	throws IOException
 	{
-		GZIPOutputStream gzos = null;
-		
+		//GZIPOutputStream gzos = null;
+		ObjectOutputStream out = null;
 		try
 		{
-			gzos = new GZIPOutputStream(new FileOutputStream(file), 2048);
-			JSX.ObjectWriter out = new JSX.ObjectWriter(gzos);
-			out.setPrettyPrint(false);
+			out = new ObjectOutputStream(new FileOutputStream(file));
 			out.writeObject(world);
 			out.close();
-			gzos.finish(); // this is key. otherwise data is not written.
+			//gzos = new GZIPOutputStream(new FileOutputStream(file), 2048);
+			//JSX.ObjectWriter out = new JSX.ObjectWriter(gzos);
+			//out.setPrettyPrint(false);
+			//out.writeObject(world);
+			//out.close();
+			//gzos.finish(); // this is key. otherwise data is not written.
 		}
 		catch(IOException ioe)
 		{
@@ -135,9 +143,9 @@ public class World implements Serializable
 		}
 		finally
 		{
-			if(gzos != null)
+			if(out != null)
 			{
-				gzos.close();
+				out.close();
 			}	
 		}
 	}// save()
@@ -509,7 +517,7 @@ public class World implements Serializable
 	*	Variant Info is a class which holds information about 
 	*	the variant, map, symbols, and symbol options.
 	*/
-	public static class VariantInfo
+	public static class VariantInfo implements Serializable
 	{
 		private String variantName;
 		private String mapName;

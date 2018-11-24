@@ -155,9 +155,9 @@ public class TestParser
 				"TestParser",
 				"Test harness for testing order parsing",
 				// options
-				new Parameter[] {argInputFile, logOpt},
+				new jcmdline.Parameter[] {argInputFile, logOpt},
 				// arguments [left on command line]
-				new Parameter[] {}
+				new jcmdline.Parameter[] {}
 			)
 		);
 		

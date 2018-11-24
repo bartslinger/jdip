@@ -24,7 +24,7 @@ package dip.world;
 
 import dip.order.OrderException;
 import dip.misc.Utils;
-
+import java.io.*;
 
 /**
 *
@@ -40,7 +40,7 @@ import dip.misc.Utils;
 *
 *
 */
-public class Location implements Cloneable
+public class Location implements Cloneable, Serializable
 {
 	/** Constant defining an empty array of Location() objects */
 	public static final Location[] EMPTY = new Location[0];

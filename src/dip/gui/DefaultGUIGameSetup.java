@@ -34,13 +34,15 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import java.io.*;
+
 /**
 *	The Default GameSetup. This is used when we are not in face-
 *	to-face or a network mode. All powers may have their orders 
 *	entered and displayed. The last turnstate is always made the
 *	current turnstate.
 */
-public class DefaultGUIGameSetup implements GUIGameSetup
+public class DefaultGUIGameSetup implements GUIGameSetup, Serializable
 {
 	
 	/** Setup the game. */

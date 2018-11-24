@@ -163,12 +163,12 @@
     <!-- build (compile) -->
 	<target name="build" depends="init" description="Build jDip">
 		<!-- Compile splash.java with a 1.1 target -->
-		<javac srcdir="${src.dir}" destdir="${build.dir}" includes="dip/gui/splash.java" target="1.1" debug="true">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" includes="dip/gui/splash.java" target="10" debug="true">
 			<classpath refid="compile.class.path"/>
 		</javac>
 		
 		<!-- Compile the java code from ${src} into ${build} -->
-		<javac srcdir="${src.dir}" destdir="${build.dir}" includes="dip/**/*.java" excludes="dip/gui/splash.java" source="1.4" debug="true">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" includes="dip/**/*.java" excludes="dip/gui/splash.java" source="10" debug="true">
 			<classpath refid="compile.class.path"/>
 		</javac>
 		

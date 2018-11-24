@@ -259,13 +259,13 @@ public class AboutDialog extends HeaderDialog
 			// into a 2D array later.
 			sortProps = new SortProp[p.size()];
 			
-			Enumeration enum = p.propertyNames();
+			Enumeration enummie = p.propertyNames();
 			int idx = 0;
-			while(enum.hasMoreElements())
+			while(enummie.hasMoreElements())
 			{
 				try 
 				{
-					String propName = (String) enum.nextElement();
+					String propName = (String) enummie.nextElement();
 					sortProps[idx] = new SortProp(propName, p.getProperty(propName));
 					idx++;
 				}

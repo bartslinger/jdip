@@ -206,7 +206,7 @@ public class VariantManager
 		
 		
 		// if we are in webstart, search for variants within webstart jars
-		Enumeration enum = null;
+		Enumeration enummie = null;
 		ClassLoader cl = null;
 		
 		if(vm.isInWebstart)
@@ -215,18 +215,18 @@ public class VariantManager
 			
 			try
 			{
-				enum = cl.getResources(VARIANT_FILE_NAME);
+				enummie = cl.getResources(VARIANT_FILE_NAME);
 			}
 			catch(IOException e)
 			{
-				enum = null;
+				enummie = null;
 			}
 			
-			if(enum != null)
+			if(enummie != null)
 			{
-				while(enum.hasMoreElements())
+				while(enummie.hasMoreElements())
 				{
-					URL variantURL = (URL) enum.nextElement();
+					URL variantURL = (URL) enummie.nextElement();
 					
 					// parse variant description file, and create hash entry of variant object -> URL
 					InputStream is = null;
@@ -264,7 +264,7 @@ public class VariantManager
 						}
 					}
 				}
-			}// if(enum != null)
+			}// if(enummie != null)
 		}
 		
 		// check: did we find *any* variants? Throw an exception.
@@ -332,7 +332,7 @@ public class VariantManager
 		}
 		
 		// if we are in webstart, search for variants within webstart jars		
-		enum = null;
+		enummie = null;
 		cl = null;
 		
 		if(vm.isInWebstart)
@@ -341,18 +341,18 @@ public class VariantManager
 			
 			try
 			{
-				enum = cl.getResources(SYMBOL_FILE_NAME);
+				enummie = cl.getResources(SYMBOL_FILE_NAME);
 			}
 			catch(IOException e)
 			{
-				enum = null;
+				enummie = null;
 			}
 			
-			if(enum != null)
+			if(enummie != null)
 			{
-				while(enum.hasMoreElements())
+				while(enummie.hasMoreElements())
 				{
-					URL symbolURL = (URL) enum.nextElement();
+					URL symbolURL = (URL) enummie.nextElement();
 					
 					// parse variant description file, and create hash entry of variant object -> URL
 					InputStream is = null;
@@ -382,7 +382,7 @@ public class VariantManager
 						}
 					}
 				}
-			}// if(enum != null)
+			}// if(enummie != null)
 		}// if(isInWebStart)		
 		
 		
@@ -954,20 +954,20 @@ public class VariantManager
 		
 		if(mro != null)
 		{
-			Enumeration enum = null;
+			Enumeration enummie = null;
 			
 			try
 			{
-				enum = cl.getResources(uri.toString());
+				enummie = cl.getResources(uri.toString());
 			}
 			catch(IOException e)
 			{
 				return null;
 			}
 			
-			while(enum.hasMoreElements())
+			while(enummie.hasMoreElements())
 			{
-				URL url = (URL) enum.nextElement();
+				URL url = (URL) enummie.nextElement();
 				
 				// deconflict. Note that this is not, and cannot be, foolproof;
 				// due to name-mangling by webstart. For example, if two plugins
@@ -1013,20 +1013,20 @@ public class VariantManager
 		ClassLoader cl = vm.getClass().getClassLoader();
 		String deconflictName = getWSPluginName(packURL);
 		
-		Enumeration enum = null;
+		Enumeration enummie = null;
 		
 		try
 		{
-			enum = cl.getResources(uri.toString());
+			enummie = cl.getResources(uri.toString());
 		}
 		catch(IOException e)
 		{
 			return null;
 		}
 		
-		while(enum.hasMoreElements())
+		while(enummie.hasMoreElements())
 		{
-			URL url = (URL) enum.nextElement();
+			URL url = (URL) enummie.nextElement();
 			
 			// deconflict. Note that this is not, and cannot be, foolproof;
 			// due to name-mangling by webstart. For example, if two plugins

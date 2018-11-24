@@ -1304,7 +1304,7 @@ public class ClientFrame extends JFrame
 			if(world != null)
 			{
 				createWorld(world);
-			}		
+			}
 		}
 		
 		public void onFileImport()
